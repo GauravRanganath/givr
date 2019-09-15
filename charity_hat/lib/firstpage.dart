@@ -3,7 +3,7 @@ import 'package:http/http.dart';
 import 'package:localstorage/localstorage.dart';
 import 'dart:convert';
 
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://13.82.224.39";
 
 class Expense{
   String npo;
@@ -98,7 +98,7 @@ class FirstPage extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 20.0),
-                  height: MediaQuery.of(context).size.height*.3,
+                  height: MediaQuery.of(context).size.height*.4,
                   child:
                   Center(
                     child:

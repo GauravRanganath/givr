@@ -48,7 +48,7 @@ var catStrToId = {
     'Vehicle': 881230,
     'Wages': 881210
   };
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://13.82.224.39";
 class Expense{
   String npo;
   int amount;
@@ -81,47 +81,43 @@ class FourthPage extends StatelessWidget {
       Response res = await get(route);
       Iterable l =  json.decode(res.body);
       List<dynamic> expenses = l.map((model)=>fromJson(model)).toList();
-
+      
       expenses.forEach((e) =>{
       debugPrint((e as Expense).amount.toString()),
-
       alist.add(
         Container(
-          child: Column(
-            children: <Widget>[
-              Text(
-                'GIVR LIVESTREAM',
-                style: TextStyle(
-                  fontSize: 40,
-                  letterSpacing: 4,
-                ),
-              ),
+          width: MediaQuery.of(context).size.width*.8,
+          height: MediaQuery.of(context).size.height*.7,
+          color: Colors.white30,
 
+
+          child: Column(
+            
+            children: <Widget>[
+             
               Text(
-                'DATE',
+                'DATE:${(e as Expense).date}',
                 style: TextStyle(
                   fontSize: 28,
                   letterSpacing: 4,
-
+                ),
+              ),
+      
+              Text(
+                'EXPENSES: ${(e as Expense).amount.toString().substring(0, 11)}',
+                style: TextStyle(
+                  fontSize: 24,
+                  letterSpacing: 4,
                 ),
               ),
 
-              Row(
-                children: <Widget>[
-                  Text(
-                    'Donations: \${${(e as Expense).amount.toString()}',
-                  ),
-                ],
+              Text(
+                'INDUSTRY:${catStrToId.keys.firstWhere((k)=>catStrToId[k] == ((e as Expense).categoryId), orElse: ()=> null)}',
+                style: TextStyle(
+                  fontSize: 24,
+                  letterSpacing: 4,
+                ),
               ),
-
-              Row(
-                children: <Widget>[
-                  Text(
-                    'Total Expenses: \${${(e as Expense).amount.toString()}',
-                  ),
-                ],
-              ),
-
 
             ],
           ),
@@ -132,9 +128,7 @@ class FourthPage extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    cool() async{
-      alist = await fetchExpenses(context);
-    }
+    
     
     return  new Container(alignment: Alignment.center,
     child: new FutureBuilder(
@@ -144,12 +138,28 @@ class FourthPage extends StatelessWidget {
           case ConnectionState.waiting: return new Text('Fetchihg....');
           default:
             if (snapshot.hasError){
-              return new Text('Error');
+              return new Container(
+                color: Colors.white10,
+                width: MediaQuery.of(context).size.width*.9,
+                height: MediaQuery.of(context).size.height*.4,
+                child: ListView(
+                  
+                scrollDirection: Axis.horizontal,
+                children: [ 
+                  Container(
+                    color: Colors.white10,
+                    
+                  )
+                  
+                ],
+              ));
             }
             return new Container(
+              color: Colors.white10,
               width: MediaQuery.of(context).size.width*.9,
               height: MediaQuery.of(context).size.height*.4,
               child: ListView(
+                
               scrollDirection: Axis.horizontal,
               children: alist,
             ));

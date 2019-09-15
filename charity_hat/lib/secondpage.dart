@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:localstorage/localstorage.dart';
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://13.82.224.39";
 class Company {
   int id;
   String name;
@@ -59,7 +59,7 @@ class _SecondPage extends State<SecondPage>{
         body:
           Container(
             padding: EdgeInsets.all(22),
-            child: Column(
+            child: ListView(
               children: <Widget>[
 
                 Padding(
@@ -170,7 +170,12 @@ class _SecondPage extends State<SecondPage>{
                       //MAke a popup box that says payment failed
                     }
                     else{
-                      //Make a popup that says payment was successful
+                      showDialog(context: context, child:
+                          new AlertDialog(
+                            title: new Text("Success"),
+                            content: new Text("Thank you for your donation!"),
+                          )
+                      );
                     }
 
                   },
