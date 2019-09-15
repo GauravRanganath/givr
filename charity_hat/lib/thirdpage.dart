@@ -123,13 +123,94 @@ class RedCross extends StatelessWidget {
       ),
       body: Center(
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(30),
             child: Column(
               children: <Widget>[
-                Image.asset('assets/charity_data/images/red-cross.jpg'),
-                Text('Canadian Red Cross'),
-                Text('International Humanitarian'),
-                Text('The Canadian Red Cross mission is to improve the lives of vulnerable people by mobilizing the power of humanity in Canada and around the world.'),
+                Text(
+                  'CANADIAN RED CROSS',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: 'Lato',
+                    color: Colors.redAccent,
+                    letterSpacing: 3,
+                  ),
+                ),
+                
+                Padding(
+                  padding: EdgeInsets.all(10),
+                ),
+                
+                Text(
+                  'INTERNATIONAL HUMANITARIANISM',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Lato',
+                    color: Colors.grey[700],
+                    letterSpacing: 2,
+                  ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.all(15),
+                ),
+
+                Image.asset(
+                    'assets/charity_data/images/red-cross.png',
+                    height: 200,
+                    width: 200,
+                ),
+
+                Padding(
+                  padding: EdgeInsets.all(15),
+                ),
+
+                Text(
+                  '10/10',
+                  style: TextStyle(
+                    fontSize: 60,
+                    fontFamily: 'Lato',
+                    color: Colors.greenAccent,
+                    letterSpacing: 5,
+                  ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.all(10),
+                ),
+
+                Text(
+                    'The Canadian Red Cross mission is to improve the lives of vulnerable people by mobilizing the power of humanity.',
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Lato',
+                  color: Colors.grey[700],
+                  letterSpacing: 1,
+                ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.all(5),
+                ),
+
+                FlatButton(
+                  onPressed: () {
+                    /*...*/
+                  },
+                  child: Text(
+                    "DONATE",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Righteous',
+                      fontSize: 24,
+                    ),
+                  ),
+                )
+
+
+
               ],
             ),
           ),
