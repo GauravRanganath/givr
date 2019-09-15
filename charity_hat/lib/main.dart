@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -9,7 +10,9 @@ void main() {
     home: FirstRoute(),
   ));
 }
-
+const baseUrl = "http://localhost:3000";
+TextEditingController userController = new TextEditingController();
+TextEditingController passController = new TextEditingController();
 class FirstRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -43,10 +46,11 @@ class FirstRoute extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(12.0),
             ),
-
+            
             Container(
               width: 300.0,
               child: TextField(
+                controller: userController,
                 obscureText: false,
                 style: TextStyle(color: Colors.grey[700]),
                 decoration: InputDecoration(
@@ -84,6 +88,7 @@ class FirstRoute extends StatelessWidget {
             Container(
               width: 300.0,
               child: TextField(
+                controller: passController,
                 obscureText: true,
                 style: TextStyle(color: Colors.grey[700]),
                 decoration: InputDecoration(
@@ -127,7 +132,12 @@ class FirstRoute extends StatelessWidget {
                   fontFamily: 'Lato'
                 ),
               ),
-              onPressed: () {
+              onPressed: () async {
+                const route = baseUrl + "/auth/login";
+                Map<String, String> headers = {"Content-type": "application/json"};
+                String json = '{"username": "${userController.text}", "password": "${passController.text}"';
+                Response res = await post(route, body: json);
+              
                 Navigator.push(
                     context, new MaterialPageRoute(
                     builder: (context) => new SecondPage()));
@@ -189,7 +199,7 @@ class _SecondPage extends State<SecondPage> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 const ListTile(
-                  leading: Icon(Icons.album, size: 70),
+                 
                   title: Text(
                       'Mississauga Food Bank',
                       style: TextStyle(
@@ -198,13 +208,7 @@ class _SecondPage extends State<SecondPage> {
                       )
                   ),
 
-                  subtitle: Text(
-                      'Housing and Homelessness',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.greenAccent[700],
-                      )
-                  ),
+                  
                 ),
                 ButtonTheme.bar(
                   child: ButtonBar(
