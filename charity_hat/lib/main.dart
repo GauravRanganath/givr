@@ -1,4 +1,5 @@
 import 'package:charity_hat/firstpage.dart';
+import 'package:charity_hat/fourthpage.dart';
 import 'package:charity_hat/secondpage.dart';
 import 'package:charity_hat/thirdpage.dart';
 import 'package:flutter/material.dart';
@@ -179,6 +180,9 @@ class _AppBottomNavigationBarControllerState extends State<AppBottomNavigationBa
     ),
     ThirdPage(
       key: PageStorageKey('Page3'),
+    ),
+    FourthPage(
+      key: PageStorageKey('Page4'),
     )
   ];
 
@@ -198,6 +202,10 @@ class _AppBottomNavigationBarControllerState extends State<AppBottomNavigationBa
             icon: Icon(Icons.account_balance),
             title: Text('Charities'),
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.attach_money),
+            title: Text("Analytics")
+          )
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.greenAccent[700],
