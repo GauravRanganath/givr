@@ -1,0 +1,37 @@
+[
+  {
+    "id": "d320a502-5371-4707-927f-d53ca36b972f0",
+    "name": "Rick Hansen Institute",
+    "services": "Spinal Cord Injury Research",
+    "image": "assets/charity_data/images/rick-hansen-institute.png",
+    "location": "Vancouver, British Columbia"
+  },
+  {
+    "id": "d320a502-5371-4707-927f-d53ca36b972f0",
+    "name": "Mississauga Food Bank",
+    "services": "Housing and Homelessness",
+    "image": "assets/charity_data/images/mississauga-food-bank.jpg",
+    "location": "Mississauga, Ontario"
+  },
+  {
+    "id": "d320a502-5371-4707-927f-d53ca36b972f0",
+    "name": "Nature Conservancy Canada",
+    "services": "Environment",
+    "image": "assets/charity_data/images/nature-conservation-canada.png",
+    "location": "Toronto, Ontario"
+  },
+  {
+    "id": "d320a502-5371-4707-927f-d53ca36b972f0",
+    "name": "Discovery House",
+    "services": "Social Services",
+    "image": "assets/charity_data/images/discovery-house.jpg",
+    "location": "Guelph, Ontario"
+  },
+  {
+    "id": "d320a502-5371-4707-927f-d53ca36b972f0",
+    "name": "Hamilton Food Share",
+    "services": "Housing and Homelessness",
+    "image": "assets/charity_data/images/hamilton-food-share.jpg",
+    "location": "Hamilton, Ontario"
+  }
+]
