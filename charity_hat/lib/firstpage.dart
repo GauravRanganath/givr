@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:localstorage/localstorage.dart';
@@ -6,21 +8,25 @@ import 'dart:convert';
 const baseUrl = "http://localhost:3000";
 
 class Expense{
-  final String npo;
-  final double amount;
-  final int categoryId;
-  final String date;
+  String npo;
+  int amount;
+  int categoryId;
+  String date;
   Expense({this.npo, this.amount, this.categoryId, this.date});
-
-  factory Expense.fromJson(Map<String, dynamic> json){
-    return Expense(
-      npo: json['npo'],
-      amount: json['amount'], 
-      categoryId: json['categoryId'],
-      date: json['date']);
-  }
+  
+  
+  
+  
+  
 }
-
+ fromJson(json){
+    Expense p = new Expense();
+    p.npo = json['npo'].toString();
+    p.amount = json['amount'];
+    p.categoryId = json['categoryId'];
+    p.date = json['date'];
+    return p;
+}
 class FirstPage extends StatelessWidget {
   const FirstPage({Key key}) : super(key: key);
   
@@ -30,18 +36,16 @@ class FirstPage extends StatelessWidget {
       const route = baseUrl + "/expenses/redcross";
         
       Response res = await get(route);
-      final body = json.decode(res.body);
-      var i = 0;
-      while(body[i] != null){
-        debugPrint(body[i].toString());
-        i = i + 1;
-      }
-    
+      Iterable l =  json.decode(res.body);
+      List<dynamic> expenses = l.map((model)=>fromJson(model)).toList();
+      expenses.forEach((e) =>{
+        debugPrint((e as Expense).amount.toString())
+      });
   }
   @override
   Widget build(BuildContext context) {
     List<Widget> alist = new List<Widget>();
-
+    fetchExpenses();
     for (int i = 0; i < 3;i++){
       alist.add(
           Container(
