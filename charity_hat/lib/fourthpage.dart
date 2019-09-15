@@ -75,39 +75,66 @@ class FourthPage extends StatelessWidget {
   const FourthPage({Key key}) : super(key: key);
   
   Future<List<Widget>> fetchExpenses(context) async {
-     final LocalStorage storage = new LocalStorage('some_key');
+      final LocalStorage storage = new LocalStorage('some_key');
       String user = storage.getItem("username");
       const route = baseUrl + "/expenses/redcross";
       Response res = await get(route);
       Iterable l =  json.decode(res.body);
       List<dynamic> expenses = l.map((model)=>fromJson(model)).toList();
-      
+
       expenses.forEach((e) =>{
-        debugPrint((e as Expense).amount.toString()),
-        
-        alist.add(
-        
-          Container(
-            color: Colors.white10,
-            child: Container(
-              color: Colors.grey[300],
-              margin: EdgeInsets.all(15),
-              child: Text("${(e as Expense).amount.toString()} + YO ${catStrToId.keys.firstWhere((k)=>catStrToId[k] == ((e as Expense).categoryId), orElse: ()=> null)} + ${(e as Expense).date}"),
-            ),
+      debugPrint((e as Expense).amount.toString()),
+
+      alist.add(
+        Container(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'GIVR LIVESTREAM',
+                style: TextStyle(
+                  fontSize: 40,
+                  letterSpacing: 4,
+                ),
+              ),
+
+              Text(
+                'DATE',
+                style: TextStyle(
+                  fontSize: 28,
+                  letterSpacing: 4,
+
+                ),
+              ),
+
+              Row(
+                children: <Widget>[
+                  Text(
+                    'Donations: \${${(e as Expense).amount.toString()}',
+                  ),
+                ],
+              ),
+
+              Row(
+                children: <Widget>[
+                  Text(
+                    'Total Expenses: \${${(e as Expense).amount.toString()}',
+                  ),
+                ],
+              ),
+
+
+            ],
           ),
-      )
-      });
+        ),
+      )});
       return alist;
-  }
+      }
   
   @override
   Widget build(BuildContext context) {
     cool() async{
       alist = await fetchExpenses(context);
     }
-    
-    
-
     
     return  new Container(alignment: Alignment.center,
     child: new FutureBuilder(
