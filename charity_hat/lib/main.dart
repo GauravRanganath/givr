@@ -171,217 +171,24 @@ class _SecondPage extends State<SecondPage> {
     ),
 
     ListView(
+      padding: const EdgeInsets.all(8),
       children: <Widget>[
-
-        Text(
-          'Charities',
-          style:
-          TextStyle(
-            fontFamily: 'Righteous',
-            fontSize: 30,
-          ),
-        ),
-
-        Padding(
-          padding: EdgeInsets.all(20.0),
-        ),
-
         Container(
-          width: 200,
-          margin: new EdgeInsets.only(left:10.0, right:10.0),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            color: Colors.grey[100],
-            elevation: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                 
-                  title: Text(
-                      'Mississauga Food Bank',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                      )
-                  ),
-
-                  
-                ),
-                ButtonTheme.bar(
-                  child: ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        child: const Text('Donate', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        child: const Text('Remove', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        Container(
-          width: 200,
-          margin: new EdgeInsets.only(left:10.0, right:10.0),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            color: Colors.grey[100],
-            elevation: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album, size: 70),
-                  title: Text('Mississauga Food Bank', style: TextStyle(color: Colors.black)),
-                  subtitle: Text('Housing and Homelessness', style: TextStyle(color: Colors.black)),
-                ),
-                ButtonTheme.bar(
-                  child: ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        child: const Text('Donate', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        child: const Text('Remove', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        Container(
-          width: 200,
-          margin: new EdgeInsets.only(left:10.0, right:10.0),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            color: Colors.grey[100],
-            elevation: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album, size: 70),
-                  title: Text('Nature Conservancy Canada', style: TextStyle(color: Colors.black)),
-                  subtitle: Text('Environment', style: TextStyle(color: Colors.black)),
-                ),
-                ButtonTheme.bar(
-                  child: ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        child: const Text('Donate', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        child: const Text('Remove', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        Container(
-          width: 200,
-          margin: new EdgeInsets.only(left:10.0, right:10.0),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            color: Colors.grey[100],
-            elevation: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album, size: 70),
-                  title: Text('Discovery House', style: TextStyle(color: Colors.black)),
-                  subtitle: Text('Social Services', style: TextStyle(color: Colors.black)),
-                ),
-                ButtonTheme.bar(
-                  child: ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        child: const Text('Donate', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        child: const Text('Remove', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        Container(
-          width: 200,
-          margin: new EdgeInsets.only(left:10.0, right:10.0),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            color: Colors.grey[100],
-            elevation: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album, size: 70),
-                  title: Text('Hamilton Food Share', style: TextStyle(color: Colors.black)),
-                  subtitle: Text('Housing and Homelessness', style: TextStyle(color: Colors.black)),
-                ),
-                ButtonTheme.bar(
-                  child: ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        child: const Text('Donate', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        child: const Text('Remove', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        Padding(
-          padding: EdgeInsets.all(20.0),
-        ),
-
-      ],
-    ),
-
+            color: Colors.grey[200],
+            height: 200,
+            child: Container(
+              margin: EdgeInsets.all(30),
+              decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  image: DecorationImage(image: AssetImage('assets/images/logo.png'),
+                  alignment: Alignment(1, 1),
+  )
+  ),
+  ),
+  ),
+  ],
+  ),
   ];
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
