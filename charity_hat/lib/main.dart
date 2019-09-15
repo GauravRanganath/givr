@@ -133,11 +133,7 @@ class FirstRoute extends StatelessWidget {
                 ),
               ),
               onPressed: () async {
-                const route = baseUrl + "/auth/login";
-                Map<String, String> headers = {"Content-type": "application/json"};
-                String json = '{"username": "${userController.text}", "password": "${passController.text}"';
-                Response res = await post(route, body: json);
-              
+
                 Navigator.push(
                     context, new MaterialPageRoute(
                     builder: (context) => new SecondPage()));
