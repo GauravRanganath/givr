@@ -1,3 +1,6 @@
+import 'package:charity_hat/firstpage.dart';
+import 'package:charity_hat/secondpage.dart';
+import 'package:charity_hat/thirdpage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
@@ -14,9 +17,10 @@ const baseUrl = "http://localhost:3000";
 TextEditingController userController = new TextEditingController();
 TextEditingController passController = new TextEditingController();
 class FirstRoute extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(  
       body: Center(
         child: Column(
 
@@ -136,22 +140,23 @@ class FirstRoute extends StatelessWidget {
 
                 const route = baseUrl + "/auth/login";
                 debugPrint(userController.text + passController.text);
-             
-                String json = '{"username": "${userController.text}", "password": "${passController.text}"';
+               
                 Response res = await post(route,  body: {
                   "username": userController.text,
                   "password": passController.text,
                 });
+               
                 debugPrint(res.statusCode.toString());
                 if (res.statusCode > 300){
                   
                 }
+               
                 else{
                   Navigator.push(
                     context, new MaterialPageRoute(
-                    builder: (context) => new SecondPage()));
-
+                    builder: (context) => new AppBottomNavigationBarController()));
                 }
+                
               },
             ),
           ],
@@ -161,229 +166,48 @@ class FirstRoute extends StatelessWidget {
   }
 }
 
-class SecondPage extends StatefulWidget {
-  const SecondPage({ Key key }) : super(key: key);
-
+class AppBottomNavigationBarController extends StatefulWidget {
   @override
-  _SecondPage createState() => _SecondPage();
+  _AppBottomNavigationBarControllerState createState() =>
+      _AppBottomNavigationBarControllerState();
 }
 
-class _SecondPage extends State<SecondPage> {
 
-  int _selectedIndex = 0;
-
-  static List<Widget> _widgetOptions = <Widget>[
-
-    Text(
-      'Index 2',
+class _AppBottomNavigationBarControllerState extends State<AppBottomNavigationBarController> {
+  
+  final List<Widget> pages = [
+    FirstPage(
+      key: PageStorageKey('Page1'),
     ),
-    Text(
-      'Index 3',
+    SecondPage(
+      key: PageStorageKey('Page2'),
     ),
-
-    ListView(
-      padding: const EdgeInsets.all(8),
-      children: <Widget>[
-        Container(
-          width: 200,
-          margin: new EdgeInsets.only(left:10.0, right:10.0),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            color: Colors.grey[100],
-            elevation: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: const CircleAvatar(backgroundImage: NetworkImage("assets/images/logo.png")),
-                  title: Text(
-                      'Mississauga Food Bank',
-                      style: TextStyle( 
-                          color: Colors.black,
-                          fontSize: 20,
-                      )
-                  ),
-
-                  
-                ),
-                ButtonTheme.bar(
-                  child: ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        child: const Text('Donate', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        child: const Text('Remove', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        Container(
-          width: 200,
-          margin: new EdgeInsets.only(left:10.0, right:10.0),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            color: Colors.grey[100],
-            elevation: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album, size: 70),
-                  title: Text('Mississauga Food Bank', style: TextStyle(color: Colors.black)),
-                  subtitle: Text('Housing and Homelessness', style: TextStyle(color: Colors.black)),
-                ),
-                ButtonTheme.bar(
-                  child: ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        child: const Text('Donate', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        child: const Text('Remove', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        Container(
-          width: 200,
-          margin: new EdgeInsets.only(left:10.0, right:10.0),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            color: Colors.grey[100],
-            elevation: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album, size: 70),
-                  title: Text('Nature Conservancy Canada', style: TextStyle(color: Colors.black)),
-                  subtitle: Text('Environment', style: TextStyle(color: Colors.black)),
-                ),
-                ButtonTheme.bar(
-                  child: ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        child: const Text('Donate', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        child: const Text('Remove', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        Container(
-          width: 200,
-          margin: new EdgeInsets.only(left:10.0, right:10.0),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            color: Colors.grey[100],
-            elevation: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album, size: 70),
-                  title: Text('Discovery House', style: TextStyle(color: Colors.black)),
-                  subtitle: Text('Social Services', style: TextStyle(color: Colors.black)),
-                ),
-                ButtonTheme.bar(
-                  child: ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        child: const Text('Donate', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        child: const Text('Remove', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        Container(
-          width: 200,
-          margin: new EdgeInsets.only(left:10.0, right:10.0),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            color: Colors.grey[100],
-            elevation: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album, size: 70),
-                  title: Text('Hamilton Food Share', style: TextStyle(color: Colors.black)),
-                  subtitle: Text('Housing and Homelessness', style: TextStyle(color: Colors.black)),
-                ),
-                ButtonTheme.bar(
-                  child: ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        child: const Text('Donate', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        child: const Text('Remove', style: TextStyle(color: Colors.black)),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        Padding(
-          padding: EdgeInsets.all(20.0),
-        ),
-
-      ],
-    ),
-
+    ThirdPage(
+      key: PageStorageKey('Page3'),
+    )
   ];
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+
+  final PageStorageBucket bucket = PageStorageBucket();
+  int _selectedIndex = 0;
+  Widget _bottomNavigationBar(int selectedIndex) => BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text('Home'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_atm),
+            title: Text('Donate'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_balance),
+            title: Text('Charities'),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.greenAccent[700],
+        onTap: (int index) => setState(() => _selectedIndex = index),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -402,37 +226,14 @@ class _SecondPage extends State<SecondPage> {
         ),
       ),
 
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white10,
-        elevation: 0,
-        child: Icon(Icons.fullscreen_exit),
-        onPressed: () {
-            Navigator.pushReplacementNamed(context, "/logout");
-          },
+      body: PageStorage(
+        child: pages[_selectedIndex],
+        bucket: bucket,
       ),
+        
 
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.local_atm),
-            title: Text('Donate'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance),
-            title: Text('Charities'),
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.greenAccent[700],
-        onTap: _onItemTapped,
-      ),
+      
+      bottomNavigationBar: _bottomNavigationBar(_selectedIndex)
     );
   }
 }
