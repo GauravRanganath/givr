@@ -10,11 +10,11 @@ class Company {
  
   static List<Company> getCompanies() {
     return <Company>[
-      Company(1, 'Red Cross'),
-      Company(2, 'Mississauga Food Bank'),
-      Company(3, "Nature Conservancy Canada"),
-      Company(4, "Discovery House",),
-      Company(5, "Hamilton Food Share"),
+      Company(1, 'RED CROSS'),
+      Company(2, 'MISSISSAUGA FOOD BANK'),
+      Company(3, "NATURE CONSERVANCY CANADA"),
+      Company(4, "DISCOVERY HOUSE",),
+      Company(5, "HAMILTON FOOD SHARE"),
     ];
   }
 
@@ -60,40 +60,86 @@ class _SecondPage extends State<SecondPage>{
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text("Select an Organization", style:TextStyle(
-                  fontSize: 30,
-                  color: Colors.grey[700],
+
+                Padding(
+                  padding: EdgeInsets.all(20),
+                ),
+
+                Text(
+                  "MAKE A DONATION",
+                  style:TextStyle(
+                      fontSize: 30,
+                      color: Colors.greenAccent[600],
+                      letterSpacing: 2,
+                      fontFamily: 'Lato'
+                  ),),
+
+                Padding(
+                  padding: EdgeInsets.all(20),
+                ),
+
+                Text(
+                  "SELECT AN ORGANIZATION",
+                  style:TextStyle(
+                  fontSize: 18,
+                  color: Colors.black,
                   letterSpacing: 2,
                   fontFamily: 'Lato'
                 ),),
-                SizedBox(
-                  height: 20.0,
+
+                Padding(
+                  padding: EdgeInsets.all(12),
                 ),
+
                 DropdownButton(
                   value: _selectedCompany,
                   items: _dropdownMenuItems,
                   onChanged: onChangeDropdownItem,
+                  style: TextStyle(
+                    fontSize: 18,
+                    letterSpacing: 2,
+                    fontFamily: 'Lato',
+                    color: Colors.lightGreenAccent[700],
+                  ),
                 ),
                 SizedBox(
                   height: 20.0,
                 ),
-                Text('Selected: ${_selectedCompany.name}',style:TextStyle(
-                  fontSize: 30,
-                  color: Colors.grey[700],
-                  letterSpacing: 2,
-                  fontFamily: 'Lato'
-                )),
+
                 new Container(
           padding: const EdgeInsets.all(40.0),
           child: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+
+          Text(
+            "ENTER AN AMOUNT TO DONATE",
+            style:TextStyle(
+                fontSize: 18,
+                color: Colors.black,
+                letterSpacing: 2,
+                fontFamily: 'Lato'
+            ),),
+
           new TextField(
-            decoration: new InputDecoration(labelText: "Enter donation amount"),
+            decoration: new InputDecoration(
+                labelText:
+                "\$0.00",
+              labelStyle: TextStyle(
+                fontSize: 20,
+                fontFamily: 'Lato',
+              ),
+            ),
             keyboardType: TextInputType.number,
             controller: myController,
           ),
+
+          Padding(
+            padding: EdgeInsets.all(15),
+          ),
+
           FlatButton(
+            color: Colors.grey[200],
             onPressed: () async {
               final LocalStorage storage = new LocalStorage('some_key');
               String user = storage.getItem("username");
@@ -115,10 +161,10 @@ class _SecondPage extends State<SecondPage>{
 
             },
               child: Text(
-                'Donate',
+                'CONFIRM DONATION',
                 style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.grey[700],
+                  fontSize: 24,
+                  color: Colors.black,
                   letterSpacing: 2,
                   fontFamily: 'Lato'
                 ),

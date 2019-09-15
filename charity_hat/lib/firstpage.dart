@@ -31,38 +31,6 @@ class FirstPage extends StatelessWidget {
             child: Container(
               color: Colors.grey[300],
               margin: EdgeInsets.all(15),
-              child: Container(
-                color: Colors.grey[700],
-                margin: EdgeInsets.all(10),
-                child: Column(
-                  children: <Widget>[
-
-                    Padding(padding: EdgeInsets.all(10)),
-
-                    Text(
-                      'EXPENSES',
-                      style: TextStyle(
-                        fontFamily: 'Lato',
-                        color: Colors.greenAccent,
-                        fontSize: 26,
-                        letterSpacing: 5,
-                      ),
-                    ),
-
-                    Padding(padding: EdgeInsets.all(10)),
-
-                    Text(
-                        '\$45',
-                        style: TextStyle(
-                      fontFamily: 'Lato',
-                      color: Colors.white,
-                      fontSize: 40,
-                          letterSpacing: 5,
-                    ),
-                    ),
-                  ],
-                ),
-              ),
             ),
           ),
       );
@@ -115,7 +83,61 @@ class FirstPage extends StatelessWidget {
                     child:
                     ListView(
                       scrollDirection: Axis.horizontal,
-                      children: alist,
+                      children: <Widget>[
+                        Container(
+                          color: Colors.white10,
+                          padding: EdgeInsets.all(20),
+                          width: MediaQuery.of(context).size.width,
+                          child: Container(
+                            padding: EdgeInsets.all(20),
+                            color: Colors.grey[300],
+                            margin: EdgeInsets.all(15),
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                    'RED CROSS ALERT',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontFamily: 'Lato',
+                                    fontSize: 24,
+                                  ),
+                                ),
+                                
+                                Padding(
+                                  padding: EdgeInsets.all(5),
+                                ),
+                                
+                                Text(
+                                    'Hundreds of Red Cross volunteers on standby as hurricane Dorian nears Atlantic Canada.',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                    fontFamily: 'Lato',
+                                    fontSize: 18,
+                                    ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        Container(
+                          color: Colors.white10,
+                          width: MediaQuery.of(context).size.width,
+                          child: Container(
+                            color: Colors.grey[300],
+                            margin: EdgeInsets.all(15),
+                          ),
+                        ),
+
+                        Container(
+                          color: Colors.white10,
+                          width: MediaQuery.of(context).size.width,
+                          child: Container(
+                            color: Colors.grey[300],
+                            margin: EdgeInsets.all(15),
+                          ),
+                        ),
+                      ],
                     ),
                   ),),
               ],
