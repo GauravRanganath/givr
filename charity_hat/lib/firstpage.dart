@@ -99,8 +99,8 @@ class FirstPage extends StatelessWidget {
                   padding: EdgeInsets.all(2),
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 50.0),
-                  height: 300.0,
+                  margin: EdgeInsets.symmetric(vertical: 20.0),
+                  height: MediaQuery.of(context).size.height*.3,
                   child:
                   Center(
                     child:
