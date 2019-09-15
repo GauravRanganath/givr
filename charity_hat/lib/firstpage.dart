@@ -5,6 +5,22 @@ import 'dart:convert';
 
 const baseUrl = "http://localhost:3000";
 
+class Expense{
+  final String npo;
+  final double amount;
+  final int categoryId;
+  final String date;
+  Expense({this.npo, this.amount, this.categoryId, this.date});
+
+  factory Expense.fromJson(Map<String, dynamic> json){
+    return Expense(
+      npo: json['npo'],
+      amount: json['amount'], 
+      categoryId: json['categoryId'],
+      date: json['date']);
+  }
+}
+
 class FirstPage extends StatelessWidget {
   const FirstPage({Key key}) : super(key: key);
   
@@ -15,9 +31,12 @@ class FirstPage extends StatelessWidget {
         
       Response res = await get(route);
       final body = json.decode(res.body);
-      
-      
-      debugPrint(body);
+      var i = 0;
+      while(body[i] != null){
+        debugPrint(body[i].toString());
+        i = i + 1;
+      }
+    
   }
   @override
   Widget build(BuildContext context) {
