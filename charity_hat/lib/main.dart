@@ -189,6 +189,7 @@ class _AppBottomNavigationBarControllerState extends State<AppBottomNavigationBa
   final PageStorageBucket bucket = PageStorageBucket();
   int _selectedIndex = 0;
   Widget _bottomNavigationBar(int selectedIndex) => BottomNavigationBar(
+        unselectedItemColor: Colors.grey,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

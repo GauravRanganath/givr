@@ -57,9 +57,11 @@ class _SecondPage extends State<SecondPage>{
       debugShowCheckedModeBanner: false,
       home: new Scaffold(
         body: new Container(
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+          child: Center(
+            child: ListView(
+              padding: const EdgeInsets.all(20.0),
               children: <Widget>[
+                
 
                 Padding(
                   padding: EdgeInsets.all(20),
@@ -103,7 +105,7 @@ class _SecondPage extends State<SecondPage>{
                   ),
                 ),
                 SizedBox(
-                  height: 20.0,
+                  height: MediaQuery.of(context).size.height*.05,
                 ),
 
                 new Container(
@@ -175,7 +177,7 @@ class _SecondPage extends State<SecondPage>{
         ],
       ))
               ],
-            ),
+            ),),
           
         ),
       ),
