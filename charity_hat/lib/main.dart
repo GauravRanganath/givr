@@ -3,6 +3,7 @@ import 'package:charity_hat/secondpage.dart';
 import 'package:charity_hat/thirdpage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:localstorage/localstorage.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -152,6 +153,8 @@ class FirstRoute extends StatelessWidget {
                 }
                
                 else{
+                  final LocalStorage storage = new LocalStorage('some_key');
+                  storage.setItem("username", userController.text);
                   Navigator.push(
                     context, new MaterialPageRoute(
                     builder: (context) => new AppBottomNavigationBarController()));
@@ -180,7 +183,7 @@ class _AppBottomNavigationBarControllerState extends State<AppBottomNavigationBa
       key: PageStorageKey('Page1'),
     ),
     SecondPage(
-      key: PageStorageKey('Page2'),
+      key: PageStorageKey('Page2')
     ),
     ThirdPage(
       key: PageStorageKey('Page3'),
