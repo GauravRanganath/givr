@@ -56,15 +56,14 @@ class _SecondPage extends State<SecondPage>{
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
       home: new Scaffold(
-        body: new Container(
-          child: Center(
-            child: ListView(
-              padding: const EdgeInsets.all(20.0),
+        body:
+          Container(
+            padding: EdgeInsets.all(22),
+            child: Column(
               children: <Widget>[
-                
 
                 Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(15)
                 ),
 
                 Text(
@@ -77,20 +76,25 @@ class _SecondPage extends State<SecondPage>{
                   ),),
 
                 Padding(
-                  padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(15)
                 ),
 
-                Text(
-                  "SELECT AN ORGANIZATION",
-                  style:TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  letterSpacing: 2,
-                  fontFamily: 'Lato'
-                ),),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      "SELECT AN ORGANIZATION",
+                      style:TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          letterSpacing: 2,
+                          fontFamily: 'Lato'
+                      ),
+                    ),
+                  ],
+                ),
 
                 Padding(
-                  padding: EdgeInsets.all(12),
+                    padding: EdgeInsets.all(15)
                 ),
 
                 DropdownButton(
@@ -101,87 +105,94 @@ class _SecondPage extends State<SecondPage>{
                     fontSize: 18,
                     letterSpacing: 2,
                     fontFamily: 'Lato',
-                    color: Colors.lightGreenAccent[700],
+                    color: Colors.greenAccent,
                   ),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height*.05,
+
+                Padding(
+                    padding: EdgeInsets.all(20)
                 ),
 
-                new Container(
-          padding: const EdgeInsets.all(40.0),
-          child: new Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-
-          Text(
-            "ENTER AN AMOUNT TO DONATE",
-            style:TextStyle(
-                fontSize: 18,
-                color: Colors.black,
-                letterSpacing: 2,
-                fontFamily: 'Lato'
-            ),),
-
-          new TextField(
-            decoration: new InputDecoration(
-                labelText:
-                "\$0.00",
-              labelStyle: TextStyle(
-                fontSize: 20,
-                fontFamily: 'Lato',
-              ),
-            ),
-            keyboardType: TextInputType.number,
-            controller: myController,
-          ),
-
-          Padding(
-            padding: EdgeInsets.all(15),
-          ),
-
-          FlatButton(
-            color: Colors.grey[200],
-            onPressed: () async {
-              final LocalStorage storage = new LocalStorage('some_key');
-              String user = storage.getItem("username");
-              const route = baseUrl + "/invoice";
-               
-              Response res = await post(route,  body: {
-                "npo": "redcross",
-                "username": user,
-                "amount":myController.text
-              });
-              
-              debugPrint(res.statusCode.toString());
-              if (res.statusCode > 300){
-                //MAke a popup box that says payment failed
-              }
-              else{
-                //Make a popup that says payment was successful
-              }
-
-            },
-              child: Text(
-                'CONFIRM DONATION',
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.black,
-                  letterSpacing: 2,
-                  fontFamily: 'Lato'
+                Row(
+                  children: <Widget>[
+                    Text(
+                      "DONATION AMOUNT",
+                      style:TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          letterSpacing: 2,
+                          fontFamily: 'Lato'
+                      ),),
+                  ],
                 ),
-               
-              ),
-              
-            )
-        ],
-      ))
+
+                Padding(
+                    padding: EdgeInsets.all(10)
+                ),
+
+                Container(
+                  child:
+                  TextField(
+                    decoration: new InputDecoration(
+                      labelText:
+                      "\$0.00",
+                      labelStyle: TextStyle(
+                        color: Colors.greenAccent,
+                        fontSize: 20,
+                        fontFamily: 'Lato',
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    controller: myController,
+                  ),
+
+                ),
+
+                Padding(
+                    padding: EdgeInsets.all(15)
+                ),
+
+                FlatButton(
+                  color: Colors.grey[200],
+                  onPressed: () async {
+                    final LocalStorage storage = new LocalStorage('some_key');
+                    String user = storage.getItem("username");
+                    const route = baseUrl + "/invoice";
+
+                    Response res = await post(route,  body: {
+                      "npo": "redcross",
+                      "username": user,
+                      "amount":myController.text
+                    });
+
+                    debugPrint(res.statusCode.toString());
+                    if (res.statusCode > 300){
+                      //MAke a popup box that says payment failed
+                    }
+                    else{
+                      //Make a popup that says payment was successful
+                    }
+
+                  },
+
+                  child: Text(
+                    'CONFIRM DONATION',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        letterSpacing: 2,
+                        fontFamily: 'Lato'
+                    ),
+
+                  ),
+
+                )
+
               ],
-            ),),
-          
+            ),
+          ),
         ),
-      ),
-    );
+      );
   }
 
  

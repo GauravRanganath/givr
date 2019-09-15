@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:localstorage/localstorage.dart';
@@ -86,7 +84,7 @@ class FirstPage extends StatelessWidget {
                 ),
 
                 Text(
-                  'CHARITIES: RED CROSS AND DISCOVERY HOUSE',
+                  'CHARITIES: RED CROSS, NCC, AND, RICK HANSEN FOUNDATION',
                   style: TextStyle(
                     fontSize: 12,
                     fontFamily: 'Lato',
@@ -118,7 +116,7 @@ class FirstPage extends StatelessWidget {
                             child: Column(
                               children: <Widget>[
                                 Text(
-                                    'RED CROSS ALERT',
+                                    'RICK HANSEN FOUNDATION ALERT',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: 'Lato',
@@ -131,7 +129,7 @@ class FirstPage extends StatelessWidget {
                                 ),
                                 
                                 Text(
-                                    'Hundreds of Red Cross volunteers on standby as hurricane Dorian nears Atlantic Canada.',
+                                    'Today the Rick Hansen Foundation (RHF), in partnership with creative agency TAXI Canada, has launched #EveryoneEverywhere, a new campaign to raise awareness of the critical need to improve physical accessibility for Canadians of all abilities.',
                                     textAlign: TextAlign.justify,
                                     style: TextStyle(
                                     fontFamily: 'Lato',
@@ -145,21 +143,78 @@ class FirstPage extends StatelessWidget {
 
                         Container(
                           color: Colors.white10,
+                          padding: EdgeInsets.all(20),
                           width: MediaQuery.of(context).size.width,
                           child: Container(
+                            padding: EdgeInsets.all(20),
                             color: Colors.grey[300],
                             margin: EdgeInsets.all(15),
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  'RED CROSS ALERT',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontFamily: 'Lato',
+                                    fontSize: 24,
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: EdgeInsets.all(5),
+                                ),
+
+                                Text(
+                                  'Hundreds of Red Cross volunteers on standby as hurricane Dorian nears Atlantic Canada.',
+                                  textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                    fontFamily: 'Lato',
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
 
                         Container(
                           color: Colors.white10,
+                          padding: EdgeInsets.all(20),
                           width: MediaQuery.of(context).size.width,
                           child: Container(
+                            padding: EdgeInsets.all(20),
                             color: Colors.grey[300],
                             margin: EdgeInsets.all(15),
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  'NCC ALERT',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontFamily: 'Lato',
+                                    fontSize: 24,
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: EdgeInsets.all(5),
+                                ),
+
+                                Text(
+                                  'Nature Conservancy of Canada increases conservation area on Lake Huron Island.',
+                                  textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                    fontFamily: 'Lato',
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
+
+
+
                       ],
                     ),
                   ),),
