@@ -142,24 +142,16 @@ class FirstRoute extends StatelessWidget {
                 const route = baseUrl + "/auth/login";
                 debugPrint(userController.text + passController.text);
                
-                Response res = await post(route,  body: {
-                  "username": userController.text,
-                  "password": passController.text,
-                });
-               
-                debugPrint(res.statusCode.toString());
-                if (res.statusCode > 300){
-                  
-                }
-               
-                else{
+
+
+
                   final LocalStorage storage = new LocalStorage('some_key');
                   storage.setItem("username", userController.text);
                   Navigator.push(
                     context, new MaterialPageRoute(
                     builder: (context) => new AppBottomNavigationBarController()));
-                }
-                
+
+
               },
             ),
           ],
